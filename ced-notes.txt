@@ -1,0 +1,10 @@
+1. Create the requirements file. "requirements.md"
+2. Based on the requirements, ask Claude code to create CLAUDE.md
+  - prompt: prompts/p1.txts
+3. proceed on planning
+  - change to opus
+  - change to planning mode
+  - prompt: prompts/p2.txt
+    - I think we do not need to create any detailed prompt information already since the requirements.md and CLAUDE.md has enough information already?
+      - Ans:
+    -

@@ -1,0 +1,2 @@
+Using the @requirements.md, proceed on breaking down the tasks.                                                                                                                                                │
+Before implementation, share to me the lists of tasks since I want to review it.
