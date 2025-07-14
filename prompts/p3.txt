@@ -1,0 +1,1 @@
+│ > please create curl.md to document the curl commands as well, it will be helpful so that developer can just use this in running. it will be convenient.                                                              │
