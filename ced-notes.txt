@@ -14,3 +14,8 @@
     - Ans: Yes and no.
       - Yes since it is the most optimize model and if you don't care about the cost then choose opus
       - No, if you are conservative on the cost and still want a quality output, sonnet is still good. However, for the planning it is important to use opus since planning the most important part.
+
+
+## Tips
+1. always commit the changes every after claude code has finish
+2. if there is an issue, just copy paste it to claude code.

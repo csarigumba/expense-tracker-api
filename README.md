@@ -16,18 +16,22 @@ A RESTful API for managing personal expenses with user authentication, built wit
 ### Prerequisites
 
 - Node.js (v14 or higher)
-- MongoDB
+- MongoDB (or Docker for containerized setup)
 - npm
 
 ### Installation
 
+#### Option 1: Local Development
+
 1. Clone the repository
 2. Install dependencies:
+
    ```bash
    npm install
    ```
 
 3. Create a `.env` file in the root directory:
+
    ```
    JWT_SECRET=your-super-secret-jwt-key-here
    MONGODB_URI=mongodb://localhost:27017/expense-tracker
@@ -40,11 +44,64 @@ A RESTful API for managing personal expenses with user authentication, built wit
    npm start    # for production
    ```
 
+#### Option 2: Docker Setup
+
+1. Clone the repository
+2. Start MongoDB with Docker Compose:
+
+   ```bash
+   docker-compose up -d
+   ```
+
+3. Install dependencies:
+
+   ```bash
+   npm install
+   ```
+
+4. Use the Docker environment file:
+
+   ```bash
+   cp .env.docker .env
+   ```
+
+5. Start the server:
+   ```bash
+   npm run dev  # for development
+   npm start    # for production
+   ```
+
+#### Docker Services
+
+The Docker Compose setup includes:
+
+- **MongoDB**: Database server (port 27017)
+- **Mongo Express**: Web-based MongoDB admin interface (port 8081)
+
+Access Mongo Express at: http://localhost:8081
+
+#### Docker Commands
+
+```bash
+# Start services
+docker-compose up -d
+
+# Stop services
+docker-compose down
+
+# View logs
+docker-compose logs mongodb
+
+# Remove volumes (clears database)
+docker-compose down -v
+```
+
 ## API Endpoints
 
 ### Authentication
 
 #### Register User
+
 - **POST** `/auth/register`
 - **Body:**
   ```json
@@ -66,6 +123,7 @@ A RESTful API for managing personal expenses with user authentication, built wit
   ```
 
 #### Login User
+
 - **POST** `/auth/login`
 - **Body:**
   ```json
@@ -89,16 +147,18 @@ A RESTful API for managing personal expenses with user authentication, built wit
 ### Expenses (Protected Routes)
 
 All expense endpoints require authentication. Include the JWT token in the Authorization header:
+
 ```
 Authorization: Bearer <your-jwt-token>
 ```
 
 #### Create Expense
+
 - **POST** `/expenses`
 - **Body:**
   ```json
   {
-    "amount": 25.50,
+    "amount": 25.5,
     "category": "Groceries",
     "description": "Weekly grocery shopping",
     "date": "2025-07-14T10:00:00Z"
@@ -110,7 +170,7 @@ Authorization: Bearer <your-jwt-token>
     "message": "Expense created successfully",
     "expense": {
       "id": "expense-id",
-      "amount": 25.50,
+      "amount": 25.5,
       "category": "Groceries",
       "description": "Weekly grocery shopping",
       "date": "2025-07-14T10:00:00Z",
@@ -120,6 +180,7 @@ Authorization: Bearer <your-jwt-token>
   ```
 
 #### Get Expenses
+
 - **GET** `/expenses`
 - **Query Parameters:**
   - `page` (optional): Page number (default: 1)
@@ -134,7 +195,7 @@ Authorization: Bearer <your-jwt-token>
     "expenses": [
       {
         "id": "expense-id",
-        "amount": 25.50,
+        "amount": 25.5,
         "category": "Groceries",
         "description": "Weekly grocery shopping",
         "date": "2025-07-14T10:00:00Z",
@@ -152,11 +213,12 @@ Authorization: Bearer <your-jwt-token>
   ```
 
 #### Update Expense
+
 - **PUT** `/expenses/:id`
 - **Body:**
   ```json
   {
-    "amount": 30.00,
+    "amount": 30.0,
     "category": "Health",
     "description": "Updated description"
   }
@@ -167,7 +229,7 @@ Authorization: Bearer <your-jwt-token>
     "message": "Expense updated successfully",
     "expense": {
       "id": "expense-id",
-      "amount": 30.00,
+      "amount": 30.0,
       "category": "Health",
       "description": "Updated description",
       "date": "2025-07-14T10:00:00Z",
@@ -177,6 +239,7 @@ Authorization: Bearer <your-jwt-token>
   ```
 
 #### Delete Expense
+
 - **DELETE** `/expenses/:id`
 - **Response:**
   ```json
@@ -188,6 +251,7 @@ Authorization: Bearer <your-jwt-token>
 ## Categories
 
 Valid expense categories:
+
 - Groceries
 - Leisure
 - Electronics
@@ -208,6 +272,7 @@ The API returns consistent error responses:
 ```
 
 Common HTTP status codes:
+
 - 200: Success
 - 201: Created
 - 400: Bad Request (validation errors)
