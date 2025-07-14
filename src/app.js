@@ -16,6 +16,22 @@ app.get('/health', (req, res) => {
   res.json({ status: 'OK', message: 'Expense Tracker API is running' });
 });
 
+// Debug route to check if auth routes are loaded
+app.get('/debug/routes', (req, res) => {
+  res.json({
+    message: 'Routes loaded',
+    routes: [
+      'GET /health',
+      'POST /auth/register',
+      'POST /auth/login',
+      'GET /expenses',
+      'POST /expenses',
+      'PUT /expenses/:id',
+      'DELETE /expenses/:id',
+    ],
+  });
+});
+
 app.use('/auth', authRoutes);
 app.use('/expenses', expenseRoutes);
 
