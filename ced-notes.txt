@@ -5,6 +5,12 @@
   - change to opus
   - change to planning mode
   - prompt: prompts/p2.txt
-    - I think we do not need to create any detailed prompt information already since the requirements.md and CLAUDE.md has enough information already?
-      - Ans:
-    -
+    - Q: I think we do not need to create any detailed prompt information already since the requirements.md and CLAUDE.md has enough information already?
+      - Ans: yes it is ok. it will generate the ff file "tasks/todo.md" and it is very detailed already.
+4. proceed on implementation
+  - switch model so that you can save cost
+  - prompt: proceed working on the task mentioned in @tasks/todo.md
+  - Q: Is it better to make the opus the implementer?
+    - Ans: Yes and no.
+      - Yes since it is the most optimize model and if you don't care about the cost then choose opus
+      - No, if you are conservative on the cost and still want a quality output, sonnet is still good. However, for the planning it is important to use opus since planning the most important part.
