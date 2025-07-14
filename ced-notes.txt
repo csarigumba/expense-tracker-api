@@ -1,4 +1,5 @@
 1. Create the requirements file. "requirements.md"
+  - ask claude to create a requirement copy pasting the raw requirements and referencing the sample-requirements.
 2. Based on the requirements, ask Claude code to create CLAUDE.md
   - prompt: prompts/p1.txts
 3. proceed on planning
